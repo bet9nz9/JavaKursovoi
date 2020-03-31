@@ -6,7 +6,7 @@ public class User {
     private  String pass;
     private  String username;
     private  String description;
-    private long jobdone_id;
+    private long jobDone_id;
     private long job_id;
 
     public User() {
@@ -52,12 +52,12 @@ public class User {
         this.description = description;
     }
 
-    public long getJobdone_id() {
-        return jobdone_id;
+    public long getJobDone_id() {
+        return jobDone_id;
     }
 
-    public void setJobdone_id(long jobdone_id) {
-        this.jobdone_id = jobdone_id;
+    public void setJobDone_id(long jobDone_id) {
+        this.jobDone_id = jobDone_id;
     }
 
     public long getJob_id() {
@@ -76,7 +76,7 @@ public class User {
                 ", pass='" + pass + '\'' +
                 ", username='" + username + '\'' +
                 ", description='" + description + '\'' +
-                ", jobdone_id=" + jobdone_id +
+                ", jobDone_id=" + jobDone_id +
                 ", job_id=" + job_id +
                 '}';
     }
