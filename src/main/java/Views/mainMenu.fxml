@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane blendMode="DARKEN" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="14.0" layoutY="-104.0" mnemonicParsing="false" text="Button" />
+      <MenuButton alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="40.0" layoutY="14.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="172.0" text="Username" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Personal office" />
+            <MenuItem mnemonicParsing="false" text="Settings" />
+            <MenuItem mnemonicParsing="false" text="Exit" />
+        </items>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MenuButton>
+      <Button layoutX="850.0" layoutY="14.0" mnemonicParsing="false" text="?">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <ListView layoutX="274.0" layoutY="68.0" prefHeight="439.0" prefWidth="451.0" />
+      <TextArea layoutX="301.0" layoutY="108.0" prefHeight="71.0" prefWidth="398.0" text="Bla bla bla about job#1(short description,first view)" />
+      <TextArea layoutX="301.0" layoutY="235.0" prefHeight="71.0" prefWidth="398.0" text="Bla bla bla about job#2(short description,first view)" />
+      <TextArea layoutX="301.0" layoutY="366.0" prefHeight="71.0" prefWidth="398.0" text="Bla bla bla about job#3(short description,first view)" />
+      <Button layoutX="418.0" layoutY="186.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Lear more" />
+      <Button layoutX="414.0" layoutY="314.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Lear more" />
+      <Button layoutX="414.0" layoutY="443.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Lear more" />
+      <Button layoutX="14.0" layoutY="519.0" mnemonicParsing="false" text="Настройки" />
+   </children>
+</AnchorPane>
