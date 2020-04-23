@@ -1,7 +1,7 @@
 package Service;
 
-import Dao.EmployerDAO;
-import Entity.Employer;
+import Dao.UserDAO;
+import Entity.User;
 import Util.SessionUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -9,57 +9,57 @@ import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
-public class EmployerService extends SessionUtil implements EmployerDAO {
-    public void add(Employer employer) {
+public class UserService extends SessionUtil implements UserDAO {
+    public void add(User user) {
         openTransactionSession();
 
         Session session = getSession();
-        session.save(employer);
+        session.save(user);
 
         closeTransactionSession();
     }
 
-    public Employer getByID(Long id) {
+    public User getByID(Long id) {
         openTransactionSession();
 
         Session session = getSession();
-        Criteria criteria = session.createCriteria(Employer.class);
+        Criteria criteria = session.createCriteria(User.class);
         criteria.add(Restrictions.eq("id",id));
 
-        Employer employer = (Employer) criteria.uniqueResult();
+        User user = (User) criteria.uniqueResult();
 
         closeTransactionSession();
 
-        return employer;
+        return user;
     }
 
-    public List<Employer> getAll() {
+    public List<User> getAll() {
         openTransactionSession();
 
         Session session = getSession();
-        Criteria criteria = session.createCriteria(Employer.class);
+        Criteria criteria = session.createCriteria(User.class);
 
-        List<Employer> results = criteria.list();
+        List<User> results = criteria.list();
 
         closeTransactionSession();
         return results;
     }
 
-    public void update(Employer employer) {
+    public void update(User user) {
         openTransactionSession();
 
         Session session = getSession();
-        session.persist(employer);
-        session.update(employer);
+        session.persist(user);
+        session.update(user);
 
         closeTransactionSession();
     }
 
-    public void remove(Employer employer) {
+    public void remove(User user) {
         openTransactionSession();
 
         Session session = getSession();
-        session.remove(employer);
+        session.remove(user);
 
         closeTransactionSession();
     }

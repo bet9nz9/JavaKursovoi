@@ -1,7 +1,7 @@
 package Dao;
 
 
-import Models.Worker;
+import Entity.Worker;
 
 import java.util.List;
 

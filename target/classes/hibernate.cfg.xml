@@ -16,9 +16,10 @@
         <property name="show_sql">true</property> <!-- Show SQL in console -->
         <property name="format_sql">true</property> <!-- Show SQL formatted -->
 
-        <mapping class="Job"/>
-        <mapping class="Worker"/>
-        <mapping class="Employer"/>
+        <mapping class="Entity.Job"/>
+        <mapping class="Entity.User"/>
+        <!--<mapping class="Worker"/>
+        <mapping class="Employer"/>-->
 
     </session-factory>
 </hibernate-configuration>

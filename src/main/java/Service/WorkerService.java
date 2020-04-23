@@ -1,7 +1,7 @@
 package Service;
 
 import Dao.WorkerDAO;
-import Models.Worker;
+import Entity.Worker;
 import Util.SessionUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;

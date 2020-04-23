@@ -1,5 +1,7 @@
 package Domain;
 
+import Entity.User;
+import Service.UserService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +10,9 @@ import javafx.stage.Stage;
 
 public class MainClass extends Application {
     public static void main(String[] args) throws Exception {
+        User.setUsers(new UserService().getAll());
+        System.out.println("***************************************************");
+        User.getUsers().forEach(x->x.toString());
         launch(args);
     }
 

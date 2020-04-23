@@ -4,12 +4,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegistrationController">
    <children>
-      <Button layoutX="384.0" layoutY="392.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="203.0" text="Регистрация" />
-      <TextField layoutX="389.0" layoutY="236.0" prefHeight="25.0" prefWidth="193.0" promptText="Логин" />
-      <TextField layoutX="389.0" layoutY="277.0" prefHeight="25.0" prefWidth="193.0" promptText="Пароль" />
-      <TextField layoutX="389.0" layoutY="317.0" prefHeight="25.0" prefWidth="193.0" promptText="Адрес электронной почты" />
-      <TextField layoutX="389.0" layoutY="356.0" prefHeight="25.0" prefWidth="193.0" promptText="Имя пользователя" />
+      <Button fx:id="registryButton" layoutX="384.0" layoutY="392.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="203.0" text="Регистрация" />
+      <TextField fx:id="login" layoutX="389.0" layoutY="236.0" prefHeight="25.0" prefWidth="193.0" promptText="Логин" />
+      <TextField fx:id="password" layoutX="389.0" layoutY="277.0" prefHeight="25.0" prefWidth="193.0" promptText="Пароль" />
+      <TextField fx:id="username" layoutX="389.0" layoutY="317.0" prefHeight="25.0" prefWidth="193.0" promptText="Имя пользователя" />
    </children>
 </AnchorPane>
