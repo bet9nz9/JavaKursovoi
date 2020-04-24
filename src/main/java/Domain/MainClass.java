@@ -11,8 +11,14 @@ import javafx.stage.Stage;
 public class MainClass extends Application {
     public static void main(String[] args) throws Exception {
         User.setUsers(new UserService().getAll());
+
+        //
         System.out.println("***************************************************");
-        User.getUsers().forEach(x->x.toString());
+        User.getUsers().forEach(x->System.out.println(x.toString()));
+        System.out.println("***************************************************");
+        System.out.println(User.getUsersMap().values());
+        //
+
         launch(args);
     }
 

@@ -2,6 +2,9 @@ package Entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "Users")
@@ -33,7 +36,9 @@ public class User {
     private List<Job> jobs;
 
     private static List<User> users;
-
+//
+    private static Map<Long,User> usersMap;
+//
     //Constructors
 
     public User() {
@@ -43,9 +48,6 @@ public class User {
         this.login = login;
         this.pass = pass;
         this.username = username;
-        this.description = null;
-        this.jobs = null;
-        this.selectJob = null;
     }
 
     public User(long id, String login, String pass, String username, String description, Job selectJob, List<Job> jobs) {
@@ -59,6 +61,17 @@ public class User {
     }
 
     //Getters and setters
+
+//
+    public static Map<Long, User> getUsersMap() {
+
+        return usersMap = users.stream().collect(Collectors.toMap(User::getId, Function.identity()));
+    }
+
+    public void setUsersMap(Map<Long, User> usersMap) {
+        this.usersMap = usersMap;
+    }
+//
 
 
     public long getId() {
