@@ -1,18 +1,16 @@
 package Controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.Stream;
 
+import Domain.SceneLoader;
 import Entity.User;
 import Service.UserService;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class RegistrationController {
 
@@ -36,22 +34,32 @@ public class RegistrationController {
 
     @FXML
     void initialize() {
+        //я мог бы выпить море
         registryButton.setOnAction(event->{
-            User.getUsers().add(new User(login.getText(),password.getText(),username.getText()));
-            UserService userService = new UserService();
-            userService.add(new User(login.getText(),password.getText(),username.getText()));
-            registryButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/Views/entrance.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
+            //Создаю стрим из юзеров, если есть юзер с таким же логином кидаю алерт и перезагружаю текущую
+            //можно место перезагрузки обнулять поля
+            //если же все хорошо, добавляется юзер в коллекцию и в бд
+            Stream<User> stream =  User.getUsers().stream();
+            if(stream.anyMatch(x->x.getLogin().equals(login.getText()))){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("");
+                alert.setContentText("Login is already used.");
+                alert.showAndWait();
+                login.setText("");
+                password.setText("");
+                username.setText("");
+                registryButton.getScene().getWindow().hide();
+                SceneLoader loader = new SceneLoader("/Views/registrationScene.fxml");
+                loader.loadPage();
+            }else {
+                // я мог бы стать другим
+                User.getUsers().add(new User(login.getText(),password.getText(),username.getText()));
+                UserService userService = new UserService();
+                userService.add(new User(login.getText(),password.getText(),username.getText()));
+                registryButton.getScene().getWindow().hide();
+                SceneLoader loader = new SceneLoader("/Views/entrance.fxml");
+                loader.loadPage();
+            }// Вечно молодой, вечно пьяный
         });
 
     }
