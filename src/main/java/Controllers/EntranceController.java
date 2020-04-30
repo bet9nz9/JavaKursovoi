@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Domain.SceneLoader;
+import Domain.UserSession;
 import Entity.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -44,6 +45,8 @@ public class EntranceController {
             for (User user : User.getUsers()){
                 if (user.getLogin().equals(loginField.getText())){
                     if (user.getPass().equals(passField.getText())){
+                        UserSession session = new UserSession();
+                        session.setSessionUser(user);
                         signButton.getScene().getWindow().hide();
                         SceneLoader loader = new SceneLoader("/Views/mainMenu.fxml");
                         loader.loadPage();

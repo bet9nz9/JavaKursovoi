@@ -1,6 +1,7 @@
 package Entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -11,7 +12,7 @@ public class Job {
     @Column(name = "id")
     private long id;
     @Column(name = "coast")
-    private  float coast;
+    private BigDecimal coast;
     @Column(name = "description")
     private  String description;
     @Column(name = "name")
@@ -36,7 +37,25 @@ public class Job {
     public Job() {
     }
 
-    public Job(long id, float coast, String description, String name, boolean visible, boolean selected, User user) {
+    public Job(String name, String description, BigDecimal coast,  User user) {
+        this.coast = coast;
+        this.description = description;
+        this.name = name;
+        this.user = user;
+        visible = true;
+        selected = false;
+    }
+
+    public Job(BigDecimal coast, String description, String name, boolean visible, boolean selected, User user) {
+        this.coast = coast;
+        this.description = description;
+        this.name = name;
+        this.visible = visible;
+        this.selected = selected;
+        this.user = user;
+    }
+
+    public Job(long id, BigDecimal coast, String description, String name, boolean visible, boolean selected, User user) {
         this.id = id;
         this.coast = coast;
         this.description = description;
@@ -57,11 +76,11 @@ public class Job {
         this.id = id;
     }
 
-    public float getCoast() {
+    public BigDecimal getCoast() {
         return coast;
     }
 
-    public void setCoast(float coast) {
+    public void setCoast(BigDecimal coast) {
         this.coast = coast;
     }
 

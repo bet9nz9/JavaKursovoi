@@ -1,6 +1,8 @@
 package Domain;
 
+import Entity.Job;
 import Entity.User;
+import Service.JobService;
 import Service.UserService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +12,9 @@ import javafx.stage.Stage;
 
 public class MainClass extends Application {
     public static void main(String[] args) throws Exception {
+        //Загрузить все из базы при запуске программы
         User.setUsers(new UserService().getAll());
+        Job.setListOfJobs(new JobService().getAll());
 
         //
         System.out.println("***************************************************");
