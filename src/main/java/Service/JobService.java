@@ -49,7 +49,7 @@ public class JobService extends SessionUtil implements JobDAO {
         openTransactionSession();
 
         Session session = getSession();
-        session.persist(job);
+        //session.persist(job);
         session.update(job);
 
         closeTransactionSession();

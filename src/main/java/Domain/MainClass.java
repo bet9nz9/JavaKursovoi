@@ -22,7 +22,6 @@ public class MainClass extends Application {
         System.out.println("***************************************************");
         System.out.println(User.getUsersMap().values());
         //
-
         launch(args);
     }
 

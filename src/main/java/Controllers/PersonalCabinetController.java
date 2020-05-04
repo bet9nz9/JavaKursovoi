@@ -49,19 +49,36 @@ public class PersonalCabinetController {
        descriptionText.setText(UserSession.getSessionUser().getDescription());
        loginText.setText(UserSession.getSessionUser().getLogin());
         //list of created
-        UserSession.getSessionUser().getJobs().forEach(e->{
-            Hyperlink hyperlink = new Hyperlink(e.getName());
-            hyperlink.setOnAction(x->{
-            });
-            listOfCreated.getChildren().add(hyperlink);
+        Job.getListOfJobs().forEach(e->{
+            System.out.println(UserSession.getSessionUser().getUsername()+"///"+e.getUser().getUsername());
+            System.out.println(UserSession.getSessionUser().getLogin()+"///"+e.getUser().getLogin());
+            System.out.println(UserSession.getSessionUser()+"///"+e.getUser());
+            if(UserSession.getSessionUser().equals(e.getUser())){
+                Hyperlink hyperlink = new Hyperlink(e.getName());
+                hyperlink.setOnAction(x->{
+                    UserSession.setJob(e);
+                    hyperlink.getScene().getWindow().hide();
+                    SceneLoader loader = new SceneLoader("/Views/jobDescription.fxml");
+                    loader.loadPage();
+                });
+                listOfCreated.getChildren().add(hyperlink);
+            }
         });
         //list of received
-       Hyperlink hyperlink=new Hyperlink(UserSession.getSessionUser().getSelectJob().getName());
+        String name = UserSession.getSessionUser().getSelectJob().getName();
+       Hyperlink hyperlink=new Hyperlink(name);
        listOfReceived.getChildren().add(hyperlink);
 
+        //ДОБВИТЬ ИЗМЕНИЕ В БАЗЕ
        changeDescriptionButton.setOnAction(event -> {
            UserSession.getSessionUser().setDescription(descriptionText.getText());
        });
+
+        backButton.setOnAction(event -> {
+            backButton.getScene().getWindow().hide();
+            SceneLoader loader = new SceneLoader("/Views/mainMenu.fxml");
+            loader.loadPage();
+        });
 
     }
 }

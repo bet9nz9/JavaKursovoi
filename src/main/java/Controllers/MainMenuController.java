@@ -38,12 +38,22 @@ public class MainMenuController {
     @FXML
     void initialize() {
 
-        Job.getListOfJobs().forEach(e->{
-            Hyperlink hyperlink = new Hyperlink(e.getName());
-            hyperlink.setOnAction(x->{
+        /*System.out.println("====================================================");
+        UserSession.getSessionUser().getJobs().forEach(e->{
+            System.out.println(e.toString());
+        });*/
 
-            });
-            listOfWork.getChildren().add(hyperlink);
+        Job.getListOfJobs().forEach(e->{
+            if (e.isVisible()){
+                Hyperlink hyperlink = new Hyperlink(e.getName());
+                hyperlink.setOnAction(x->{
+                    UserSession.setJob(e);
+                    hyperlink.getScene().getWindow().hide();
+                    SceneLoader loader = new SceneLoader("/Views/jobDescription.fxml");
+                    loader.loadPage();
+                });
+                listOfWork.getChildren().add(hyperlink);
+            }
         });
 
         menu.setText(UserSession.getSessionUser().getUsername());
@@ -57,6 +67,11 @@ public class MainMenuController {
             userSession.setSessionUser(null);
             menu.getScene().getWindow().hide();
             SceneLoader loader = new SceneLoader("/Views/entrance.fxml");
+            loader.loadPage();
+        });
+        personalOffice.setOnAction(event -> {
+            menu.getScene().getWindow().hide();
+            SceneLoader loader = new SceneLoader("/Views/personalCabinet.fxml");
             loader.loadPage();
         });
     }
