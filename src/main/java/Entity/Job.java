@@ -69,6 +69,14 @@ public class Job {
         this.user = user;
     }
 
+    public Job(BigDecimal coast, String description, String name, boolean selected, User user) {
+        this.coast = coast;
+        this.description = description;
+        this.name = name;
+        this.selected = selected;
+        this.user = user;
+    }
+
     //Getters and setters
 
 

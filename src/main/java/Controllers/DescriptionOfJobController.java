@@ -43,7 +43,6 @@ public class DescriptionOfJobController {
         hobDescription.setText(UserSession.getSelectedJob().getDescription());
 
         acceptJobButton.setOnAction(event -> {
-            //UserSession.getJob().setVisible(false);
             Job.getListOfJobs().forEach(e->{
                 if (e.equals(UserSession.getSelectedJob())){
                     e.setSelected(true);
