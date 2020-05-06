@@ -19,8 +19,6 @@ public class MainClass extends Application {
         //
         System.out.println("***************************************************");
         User.getUsers().forEach(x->System.out.println(x.toString()));
-        System.out.println("***************************************************");
-        System.out.println(User.getUsersMap().values());
         //
         launch(args);
     }

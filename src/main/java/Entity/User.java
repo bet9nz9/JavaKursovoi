@@ -2,9 +2,6 @@ package Entity;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "Users")
@@ -23,22 +20,14 @@ public class User {
     private  String description;
 
     //связь один к одному
-    @OneToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST
-    })
-    @JoinColumn(name = "selectJob")
-    private Job selectJob;
+    @OneToMany(targetEntity = Job.class, mappedBy = "executor", cascade = CascadeType.ALL)
+    private List<Job> selectedJobs;
 
     //связь один ко многим к таблице работ
     @OneToMany(targetEntity = Job.class,mappedBy = "user", cascade = CascadeType.ALL)
     private List<Job> jobs;
 
     private static List<User> users;
-//
-    private static Map<Long,User> usersMap;
-//
     //Constructors
 
     public User() {
@@ -50,29 +39,17 @@ public class User {
         this.username = username;
     }
 
-    public User(long id, String login, String pass, String username, String description, Job selectJob, List<Job> jobs) {
+    public User(long id, String login, String pass, String username, String description, List<Job> selectedJobs, List<Job> jobs) {
         this.id = id;
         this.login = login;
         this.pass = pass;
         this.username = username;
         this.description = description;
-        this.selectJob = selectJob;
+        this.selectedJobs = selectedJobs;
         this.jobs = jobs;
     }
 
     //Getters and setters
-
-//
-    public static Map<Long, User> getUsersMap() {
-
-        return usersMap = users.stream().collect(Collectors.toMap(User::getId, Function.identity()));
-    }
-
-    public void setUsersMap(Map<Long, User> usersMap) {
-        this.usersMap = usersMap;
-    }
-//
-
 
     public long getId() {
         return id;
@@ -114,12 +91,16 @@ public class User {
         this.description = description;
     }
 
-    public Job getSelectJob() {
-        return selectJob;
+    public List<Job> getSelectedJobs() {
+        return selectedJobs;
     }
 
-    public void setSelectJob(Job selectJob) {
-        this.selectJob = selectJob;
+    public void setSelectedJobs(List<Job> selectedJobs) {
+        this.selectedJobs = selectedJobs;
+    }
+
+    public void addSelectedJobs(Job selectedJob){
+        selectedJobs.add(selectedJob);
     }
 
     public List<Job> getJobs() {

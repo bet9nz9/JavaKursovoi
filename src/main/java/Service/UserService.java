@@ -49,7 +49,7 @@ public class UserService extends SessionUtil implements UserDAO {
         openTransactionSession();
 
         Session session = getSession();
-        session.persist(user);
+        //session.persist(user);
         session.update(user);
 
         closeTransactionSession();

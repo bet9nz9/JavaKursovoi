@@ -17,11 +17,16 @@ public class Job {
     private  String description;
     @Column(name = "name")
     private  String name;
-    @Column(name = "visible")
-    private boolean visible;
     @Column(name = "is_selected")
     private boolean selected;
-    //связь один к одному к таблице работодателей
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST
+    })
+    @JoinColumn(name = "executor_id")
+    private User executor;
+
     @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
@@ -42,25 +47,24 @@ public class Job {
         this.description = description;
         this.name = name;
         this.user = user;
-        visible = true;
         selected = false;
+        executor = null;
     }
 
-    public Job(BigDecimal coast, String description, String name, boolean visible, boolean selected, User user) {
+    public Job(BigDecimal coast, String description, String name, boolean selected, User user, User executor) {
         this.coast = coast;
         this.description = description;
         this.name = name;
-        this.visible = visible;
         this.selected = selected;
         this.user = user;
+        this.executor = executor;
     }
 
-    public Job(long id, BigDecimal coast, String description, String name, boolean visible, boolean selected, User user) {
+    public Job(long id, BigDecimal coast, String description, String name, boolean selected, User user) {
         this.id = id;
         this.coast = coast;
         this.description = description;
         this.name = name;
-        this.visible = visible;
         this.selected = selected;
         this.user = user;
     }
@@ -100,14 +104,6 @@ public class Job {
         this.name = name;
     }
 
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
     public boolean isSelected() {
         return selected;
     }
@@ -130,5 +126,13 @@ public class Job {
 
     public static void setListOfJobs(List<Job> listOfJobs) {
         Job.listOfJobs = listOfJobs;
+    }
+
+    public User getExecutor() {
+        return executor;
+    }
+
+    public void setExecutor(User executor) {
+        this.executor = executor;
     }
 }

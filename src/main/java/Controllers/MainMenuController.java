@@ -44,10 +44,10 @@ public class MainMenuController {
         });*/
 
         Job.getListOfJobs().forEach(e->{
-            if (e.isVisible()){
+            if (!e.isSelected()){
                 Hyperlink hyperlink = new Hyperlink(e.getName());
                 hyperlink.setOnAction(x->{
-                    UserSession.setJob(e);
+                    UserSession.setSelectedJob(e);
                     hyperlink.getScene().getWindow().hide();
                     SceneLoader loader = new SceneLoader("/Views/jobDescription.fxml");
                     loader.loadPage();

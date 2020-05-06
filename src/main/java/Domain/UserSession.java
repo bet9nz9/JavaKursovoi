@@ -5,7 +5,7 @@ import Entity.User;
 
 public class UserSession {
     private static User sessionUser;
-    private static Job job;
+    private static Job selectedJob;
     //Constructors
 
     public UserSession() {
@@ -20,12 +20,11 @@ public class UserSession {
         UserSession.sessionUser = sessionUser;
     }
 
-
-    public static Job getJob() {
-        return job;
+    public static Job getSelectedJob() {
+        return selectedJob;
     }
 
-    public static void setJob(Job job) {
-        UserSession.job = job;
+    public static void setSelectedJob(Job selectedJob) {
+        UserSession.selectedJob = selectedJob;
     }
 }

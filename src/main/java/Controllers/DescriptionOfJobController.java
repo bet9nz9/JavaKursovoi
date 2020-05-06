@@ -7,11 +7,11 @@ import Domain.SceneLoader;
 import Domain.UserSession;
 import Entity.Job;
 import Service.JobService;
+import Service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-import javax.jws.soap.SOAPBinding;
 
 public class DescriptionOfJobController {
 
@@ -38,18 +38,20 @@ public class DescriptionOfJobController {
 
     @FXML
     void initialize() {
-        jobName.setText(UserSession.getJob().getName());
-        username.setText(UserSession.getJob().getUser().getUsername());
-        hobDescription.setText(UserSession.getJob().getDescription());
+        jobName.setText(UserSession.getSelectedJob().getName());
+        username.setText(UserSession.getSelectedJob().getUser().getUsername());
+        hobDescription.setText(UserSession.getSelectedJob().getDescription());
 
         acceptJobButton.setOnAction(event -> {
-            UserSession.getJob().setVisible(false);
+            //UserSession.getJob().setVisible(false);
             Job.getListOfJobs().forEach(e->{
-                if (e.equals(UserSession.getJob())){
-                    UserSession.getSessionUser().setSelectJob(e);
-                    e.setVisible(false);
-                    JobService service = new JobService();
-                    service.update(UserSession.getJob());
+                if (e.equals(UserSession.getSelectedJob())){
+                    e.setSelected(true);
+                    UserSession.getSelectedJob().setExecutor(UserSession.getSessionUser());
+                    JobService jobService = new JobService();
+                    jobService.update(UserSession.getSelectedJob());
+                    UserService userService = new UserService();
+                    userService.update(UserSession.getSessionUser());
                 }
             });
         });

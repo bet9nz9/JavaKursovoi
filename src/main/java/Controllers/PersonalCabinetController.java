@@ -56,7 +56,7 @@ public class PersonalCabinetController {
             if(UserSession.getSessionUser().equals(e.getUser())){
                 Hyperlink hyperlink = new Hyperlink(e.getName());
                 hyperlink.setOnAction(x->{
-                    UserSession.setJob(e);
+                    //UserSession.setJob(e);
                     hyperlink.getScene().getWindow().hide();
                     SceneLoader loader = new SceneLoader("/Views/jobDescription.fxml");
                     loader.loadPage();
@@ -65,9 +65,9 @@ public class PersonalCabinetController {
             }
         });
         //list of received
-        String name = UserSession.getSessionUser().getSelectJob().getName();
-       Hyperlink hyperlink=new Hyperlink(name);
-       listOfReceived.getChildren().add(hyperlink);
+        //String name = UserSession.getSessionUser().getSelectedJobs().getName();
+       //Hyperlink hyperlink=new Hyperlink(name);
+       //listOfReceived.getChildren().add(hyperlink);
 
         //ДОБВИТЬ ИЗМЕНИЕ В БАЗЕ
        changeDescriptionButton.setOnAction(event -> {
