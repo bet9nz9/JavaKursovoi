@@ -9,7 +9,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
+    private Long id;
     @Column(name = "login")
     private  String login;
     @Column(name = "password")
@@ -39,7 +39,7 @@ public class User {
         this.username = username;
     }
 
-    public User(long id, String login, String pass, String username, String description, List<Job> selectedJobs, List<Job> jobs) {
+    public User(Long id, String login, String pass, String username, String description, List<Job> selectedJobs, List<Job> jobs) {
         this.id = id;
         this.login = login;
         this.pass = pass;
@@ -51,11 +51,11 @@ public class User {
 
     //Getters and setters
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
