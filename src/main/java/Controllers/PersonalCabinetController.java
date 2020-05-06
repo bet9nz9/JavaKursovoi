@@ -53,15 +53,23 @@ public class PersonalCabinetController {
             System.out.println(UserSession.getSessionUser().getUsername()+"///"+e.getUser().getUsername());
             System.out.println(UserSession.getSessionUser().getLogin()+"///"+e.getUser().getLogin());
             System.out.println(UserSession.getSessionUser()+"///"+e.getUser());
-            if(UserSession.getSessionUser().equals(e.getUser())){
+            if(UserSession.getSessionUser().getId()==e.getUser().getId()){
                 Hyperlink hyperlink = new Hyperlink(e.getName());
                 hyperlink.setOnAction(x->{
-                    //UserSession.setJob(e);
                     hyperlink.getScene().getWindow().hide();
                     SceneLoader loader = new SceneLoader("/Views/jobDescription.fxml");
                     loader.loadPage();
                 });
                 listOfCreated.getChildren().add(hyperlink);
+            }
+            if (UserSession.getSessionUser().getSelectedJobs().contains(e)){
+                Hyperlink hyperlink = new Hyperlink(e.getName());
+                hyperlink.setOnAction(x->{
+                    hyperlink.getScene().getWindow().hide();
+                    SceneLoader loader = new SceneLoader("/Views/jobDescription.fxml");
+                    loader.loadPage();
+                });
+                listOfReceived.getChildren().add(hyperlink);
             }
         });
         //list of received
