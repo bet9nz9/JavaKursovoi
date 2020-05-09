@@ -9,11 +9,17 @@ import java.io.IOException;
 
 public class SceneLoader {
     private String loadPage;
+    private Stage stage = new Stage();
 
     public SceneLoader(String loadPage) {
         this.loadPage = loadPage;
     }
+    public SceneLoader(String title, String page){
+        stage.setTitle(title);
+        loadPage=page;
+    }
     public void loadPage(){
+        closeStage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(this.loadPage));
         try {
@@ -22,8 +28,11 @@ public class SceneLoader {
             e.printStackTrace();
         }
         Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+        Stage newStage = new Stage();//
+        newStage.setScene(new Scene(root));//
+        newStage.show();//
+    }
+    public void closeStage(){
+        stage.close();
     }
 }

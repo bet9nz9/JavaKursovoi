@@ -3,9 +3,12 @@ package Controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 import Domain.SceneLoader;
 import Domain.UserSession;
 import Entity.Job;
+import Entity.User;
+import Service.JobService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.MenuButton;
@@ -37,11 +40,8 @@ public class MainMenuController {
 
     @FXML
     void initialize() {
-
-        /*System.out.println("====================================================");
-        UserSession.getSessionUser().getJobs().forEach(e->{
-            System.out.println(e.toString());
-        });*/
+        User.getUsers().clear();
+        Job.setListOfJobs(new JobService().getAll());
 
         Job.getListOfJobs().forEach(e->{
             if (!e.isSelected()){

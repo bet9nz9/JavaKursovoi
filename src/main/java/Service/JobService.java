@@ -17,6 +17,7 @@ public class JobService extends SessionUtil implements JobDAO {
         session.save(job);
 
         closeTransactionSession();
+        Job.setListOfJobs(new JobService().getAll());
     }
 
     public Job getByID(Long id) {

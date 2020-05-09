@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import Domain.SceneLoader;
 import Domain.UserSession;
 import Entity.User;
+import Service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -35,6 +36,9 @@ public class EntranceController {
     void initialize() {
         //Sweet home Alabama, where the skies are so blue
         //SWEET HOME ALABAMA, LORD I'M COMING HOME TO YOU
+
+        User.setUsers(new UserService().getAll());
+
         registrationButton.setOnAction(event->{
             registrationButton.getScene().getWindow().hide();
             SceneLoader loader = new SceneLoader("/Views/registrationScene.fxml");
@@ -42,7 +46,7 @@ public class EntranceController {
         });
 
         signButton.setOnAction(event->{
-            for (User user : User.getUsers()){
+            User.getUsers().forEach(user->{
                 if (user.getLogin().equals(loginField.getText())){
                     if (user.getPass().equals(passField.getText())){
                         UserSession session = new UserSession();
@@ -56,9 +60,13 @@ public class EntranceController {
                         alert.setContentText("Wrong login or password!");
                         alert.showAndWait();
                     }
+                }else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("");
+                    alert.setContentText("Wrong login or password!");
+                    alert.showAndWait();
                 }
-            }
-
+            });
         });
     }
 }
