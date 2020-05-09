@@ -2,7 +2,7 @@ package Domain;
 
 import Entity.Job;
 import Entity.User;
-
+//Класс для пробрасывания пользователя и работы
 public class UserSession {
     private static User sessionUser;
     private static Job selectedJob;

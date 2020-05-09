@@ -34,9 +34,6 @@ public class EntranceController {
 
     @FXML
     void initialize() {
-        //Sweet home Alabama, where the skies are so blue
-        //SWEET HOME ALABAMA, LORD I'M COMING HOME TO YOU
-
         User.setUsers(new UserService().getAll());
 
         registrationButton.setOnAction(event->{
@@ -45,6 +42,9 @@ public class EntranceController {
             loader.loadPage();
         });
 
+        /* В коллекции юзеров ищется необходимый по логину,после чего сравнивается пароль,если он неправильный - выскакивает алерт
+        В UserSession заносятся данные пользователя
+         */
         signButton.setOnAction(event->{
             User.getUsers().forEach(user->{
                 if (user.getLogin().equals(loginField.getText())){
@@ -54,17 +54,13 @@ public class EntranceController {
                         signButton.getScene().getWindow().hide();
                         SceneLoader loader = new SceneLoader("/Views/mainMenu.fxml");
                         loader.loadPage();
-                    }else {
+                    }
+                    else {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("");
                         alert.setContentText("Wrong login or password!");
                         alert.showAndWait();
                     }
-                }else {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("");
-                    alert.setContentText("Wrong login or password!");
-                    alert.showAndWait();
                 }
             });
         });

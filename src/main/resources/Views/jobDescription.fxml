@@ -14,7 +14,7 @@
          </font>
       </Text>
       <Text fx:id="username" layoutX="41.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="hobDescription" layoutX="41.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="617.13671875" />
+      <Text fx:id="jobDescription" layoutX="41.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="617.13671875" />
       <Button fx:id="acceptJobButton" layoutX="264.0" layoutY="247.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="185.0" text="Accept" />
       <Button fx:id="backButton" layoutX="264.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="185.0" text="Back" />
    </children>

@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import java.util.List;
 
 public class UserService extends SessionUtil implements UserDAO {
+    //Добавление пользователя
     public void add(User user) {
         openTransactionSession();
 
@@ -18,7 +19,7 @@ public class UserService extends SessionUtil implements UserDAO {
 
         closeTransactionSession();
     }
-
+    //Получение по id
     public User getByID(Long id) {
         openTransactionSession();
 
@@ -32,7 +33,7 @@ public class UserService extends SessionUtil implements UserDAO {
 
         return user;
     }
-
+    //Получение всех
     public List<User> getAll() {
         openTransactionSession();
 
@@ -44,7 +45,7 @@ public class UserService extends SessionUtil implements UserDAO {
         closeTransactionSession();
         return results;
     }
-
+    //Обновление данных
     public void update(User user) {
         openTransactionSession();
 
@@ -54,7 +55,7 @@ public class UserService extends SessionUtil implements UserDAO {
 
         closeTransactionSession();
     }
-
+    //Удаление данных
     public void remove(User user) {
         openTransactionSession();
 

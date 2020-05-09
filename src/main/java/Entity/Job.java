@@ -19,6 +19,7 @@ public class Job {
     private  String name;
     @Column(name = "is_selected")
     private boolean selected;
+
     @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
@@ -26,6 +27,7 @@ public class Job {
     })
     @JoinColumn(name = "executor_id")
     private User executor;
+
 
     @ManyToOne(cascade = {
             CascadeType.DETACH,

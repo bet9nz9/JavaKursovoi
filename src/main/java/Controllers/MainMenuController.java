@@ -42,11 +42,11 @@ public class MainMenuController {
     void initialize() {
         User.getUsers().clear();
         Job.setListOfJobs(new JobService().getAll());
-
         Job.getListOfJobs().forEach(e->{
             if (!e.isSelected()){
                 Hyperlink hyperlink = new Hyperlink(e.getName());
                 hyperlink.setOnAction(x->{
+                    //При нажатии на ссылку выбранная работа помещается в UserSession
                     UserSession.setSelectedJob(e);
                     hyperlink.getScene().getWindow().hide();
                     SceneLoader loader = new SceneLoader("/Views/jobDescription.fxml");
@@ -62,6 +62,7 @@ public class MainMenuController {
             SceneLoader loader = new SceneLoader("/Views/jobAdd.fxml");
             loader.loadPage();
         });
+        //Выход с аккаунта,пользователь сессии устанавливается в null
         exit.setOnAction(event -> {
             UserSession userSession = new UserSession();
             userSession.setSessionUser(null);

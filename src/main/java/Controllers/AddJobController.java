@@ -40,10 +40,8 @@ public class AddJobController {
     void initialize() {
         addButton.setOnAction(event -> {
             addButton.getScene().getWindow().hide();
-            //Job.getListOfJobs().add(new Job(jobName.getText(),jobDescription.getText(),new BigDecimal(paymentField.getText()), UserSession.getSessionUser()));
             JobService jobService = new JobService();
             jobService.add(new Job(new BigDecimal(paymentField.getText()), jobDescription.getText(), jobName.getText(), false, UserSession.getSessionUser()));
-
             SceneLoader loader = new SceneLoader("/Views/mainMenu.fxml");
             loader.loadPage();
         });

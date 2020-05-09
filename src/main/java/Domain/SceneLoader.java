@@ -6,11 +6,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
+//Класс для создания и прогрузки новых окон
 public class SceneLoader {
     private String loadPage;
     private Stage stage = new Stage();
-
     public SceneLoader(String loadPage) {
         this.loadPage = loadPage;
     }

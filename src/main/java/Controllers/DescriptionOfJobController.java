@@ -28,7 +28,7 @@ public class DescriptionOfJobController {
     private Text username;
 
     @FXML
-    private Text hobDescription;
+    private Text jobDescription;
 
     @FXML
     private Button acceptJobButton;
@@ -40,8 +40,10 @@ public class DescriptionOfJobController {
     void initialize() {
         jobName.setText(UserSession.getSelectedJob().getName());
         username.setText(UserSession.getSelectedJob().getUser().getUsername());
-        hobDescription.setText(UserSession.getSelectedJob().getDescription());
-
+        jobDescription.setText(UserSession.getSelectedJob().getDescription());
+        /*при нажатии на ссылку работы,работа помещается в UserSession для последующего использования
+        при нажатии на кнопку accept в коллекции работ ищется конткретная работа,эта работа изменяет поле "выбранная(selected)" в коллекции и в базе
+        после это проводится обновления базы данных*/
         acceptJobButton.setOnAction(event -> {
             Job.getListOfJobs().forEach(e->{
                 if (e.equals(UserSession.getSelectedJob())){

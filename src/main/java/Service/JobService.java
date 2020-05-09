@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import java.util.List;
 
 public class JobService extends SessionUtil implements JobDAO {
+    //Добавление работы
     public void add(Job job) {
         openTransactionSession();
 
@@ -19,7 +20,7 @@ public class JobService extends SessionUtil implements JobDAO {
         closeTransactionSession();
         Job.setListOfJobs(new JobService().getAll());
     }
-
+    //Получение по id
     public Job getByID(Long id) {
         openTransactionSession();
 
@@ -33,7 +34,7 @@ public class JobService extends SessionUtil implements JobDAO {
 
         return job;
     }
-
+    //Получение всех
     public List<Job> getAll() {
         openTransactionSession();
 
@@ -45,17 +46,16 @@ public class JobService extends SessionUtil implements JobDAO {
         closeTransactionSession();
         return results;
     }
-
+    //Обновление данных
     public void update(Job job) {
         openTransactionSession();
 
         Session session = getSession();
-        //session.persist(job);
         session.update(job);
 
         closeTransactionSession();
     }
-
+    //Удаление данных
     public void remove(Job job) {
         openTransactionSession();
 
